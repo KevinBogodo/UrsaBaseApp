@@ -3,6 +3,7 @@ package com.urssa.urssaAppPressing.v2.appConfig.jwt;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -25,6 +26,10 @@ public class SecurityConfiguration {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                     .requestMatchers("api/v2/auth/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "api/v2/access/permissions/").hasAuthority("ROOT")
+                    .requestMatchers(HttpMethod.GET, "api/v2/access/permissions/**").hasAuthority("ROOT")
+                    .requestMatchers(HttpMethod.POST, "api/v2/access/permissions").hasAuthority("ROOT")
+                    .requestMatchers(HttpMethod.PUT, "api/v2/access/permissions/**").hasAuthority("ROOT")
                     .anyRequest().authenticated()
             )
             .sessionManagement(session -> session

@@ -1,27 +1,27 @@
 package com.urssa.urssaAppPressing.v2.appConfig.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
 @MappedSuperclass
 public class BaseEntity {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue( generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(updatable = false, nullable = false)
+    private UUID id;
 
 
 
@@ -35,9 +35,14 @@ public class BaseEntity {
     @Column(updatable = false, name = "created_at")
     private LocalDateTime createdAt;
 
-    @CreationTimestamp
+    @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-
+    public BaseEntity(Long createdBy, Long updatedBy, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 }

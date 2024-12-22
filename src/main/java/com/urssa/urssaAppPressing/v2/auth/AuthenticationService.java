@@ -1,7 +1,6 @@
 package com.urssa.urssaAppPressing.v2.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.net.httpserver.HttpServer;
 import com.urssa.urssaAppPressing.v2.appConfig.jwt.JwtService;
 import com.urssa.urssaAppPressing.v2.appConfig.response.AuthenticationResponse;
 import com.urssa.urssaAppPressing.v2.auth.request.AuthenticationRequest;
