@@ -30,12 +30,15 @@ public class GlobalExceptionHandler {
             validationErrors.put(error.getField(), error.getDefaultMessage());
         }
 
+        var message = validationErrors.values();
+
         // Build response
         ApiErrorResponse apiErrorResponse = new ApiErrorResponse(
                 LocalDateTime.now(),
                 HttpStatus.BAD_REQUEST.value(),
                 "Validation error",
-                validationErrors.toString(),
+                message.toString(),
+                message,
                 request.getRequestURI()
         );
         return new ResponseEntity<>(apiErrorResponse, HttpStatus.BAD_REQUEST);
@@ -53,6 +56,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 "internal_server_error",
                 ex.getMessage(),
+                null,
                 request.getRequestURI()
         );
 
@@ -70,6 +74,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.NOT_FOUND.value(),
                 "not_found",
                 ex.getMessage(),
+                null,
                 request.getRequestURI()
         );
 

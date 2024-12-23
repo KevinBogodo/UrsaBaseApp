@@ -50,7 +50,6 @@ class PermissionServicesImplTest {
     public void should_return_all_permissions_when_search_term_is_empty() {
         // Fake data
         UUID mockId = UUID.randomUUID();
-        UUID mockCreatedBy = UUID.randomUUID();
         LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
         LocalDateTime updatedAt = LocalDateTime.now();
         List<Permission> permissions = new ArrayList<>();
@@ -58,7 +57,6 @@ class PermissionServicesImplTest {
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdBy(mockCreatedBy)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build()
@@ -70,7 +68,6 @@ class PermissionServicesImplTest {
                         mockId,
                         "Admin",
                         "Admin",
-                        mockCreatedBy,
                         createdAt,
                         updatedAt)
                 );
@@ -85,7 +82,6 @@ class PermissionServicesImplTest {
     public void should_return_all_permissions_when_search_term_as_value() {
         String term = "Ad";
         UUID mockId = UUID.randomUUID();
-        UUID mockCreatedBy = UUID.randomUUID();
         LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
         LocalDateTime updatedAt = LocalDateTime.now();
         List<Permission> permissions = new ArrayList<>();
@@ -93,7 +89,6 @@ class PermissionServicesImplTest {
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdBy(mockCreatedBy)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build()
@@ -105,7 +100,6 @@ class PermissionServicesImplTest {
                         mockId,
                         "Admin",
                         "Admin",
-                        mockCreatedBy,
                         createdAt,
                         updatedAt)
                 );
@@ -127,7 +121,6 @@ class PermissionServicesImplTest {
         String term = "Adm";
 
         UUID mockId = UUID.randomUUID();
-        UUID mockCreatedBy = UUID.randomUUID();
         LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
         LocalDateTime updatedAt = LocalDateTime.now();
 
@@ -135,7 +128,6 @@ class PermissionServicesImplTest {
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdBy(mockCreatedBy)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build();
@@ -157,7 +149,6 @@ class PermissionServicesImplTest {
                          mockId,
                          "Admin",
                          "Admin",
-                         mockCreatedBy,
                          createdAt,
                          updatedAt)
                  );
@@ -185,7 +176,6 @@ class PermissionServicesImplTest {
         String term = "";
 
         UUID mockId = UUID.randomUUID();
-        UUID mockCreatedBy = UUID.randomUUID();
         LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
         LocalDateTime updatedAt = LocalDateTime.now();
 
@@ -193,7 +183,6 @@ class PermissionServicesImplTest {
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdBy(mockCreatedBy)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build();
@@ -214,7 +203,6 @@ class PermissionServicesImplTest {
                         mockId,
                         "Admin",
                         "Admin",
-                        mockCreatedBy,
                         createdAt,
                         updatedAt)
                 );
@@ -242,7 +230,6 @@ class PermissionServicesImplTest {
         String term = "Adm";
 
         UUID mockId = UUID.randomUUID();
-        UUID mockCreatedBy = UUID.randomUUID();
         LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
         LocalDateTime updatedAt = LocalDateTime.now();
 
@@ -250,7 +237,6 @@ class PermissionServicesImplTest {
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdBy(mockCreatedBy)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build();
@@ -271,7 +257,6 @@ class PermissionServicesImplTest {
                         mockId,
                         "Admin",
                         "Admin",
-                        mockCreatedBy,
                         createdAt,
                         updatedAt)
                 );
@@ -299,7 +284,6 @@ class PermissionServicesImplTest {
         String term = "Adm";
 
         UUID mockId = UUID.randomUUID();
-        UUID mockCreatedBy = UUID.randomUUID();
         LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
         LocalDateTime updatedAt = LocalDateTime.now();
 
@@ -307,7 +291,6 @@ class PermissionServicesImplTest {
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdBy(mockCreatedBy)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build();
@@ -329,7 +312,6 @@ class PermissionServicesImplTest {
                         mockId,
                         "Admin",
                         "Admin",
-                        mockCreatedBy,
                         createdAt,
                         updatedAt)
                 );
@@ -357,7 +339,6 @@ class PermissionServicesImplTest {
         String term = "Ad";
 
         UUID mockId = UUID.randomUUID();
-        UUID mockCreatedBy = UUID.randomUUID();
         LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
         LocalDateTime updatedAt = LocalDateTime.now();
 
@@ -365,7 +346,6 @@ class PermissionServicesImplTest {
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdBy(mockCreatedBy)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build();
@@ -386,7 +366,6 @@ class PermissionServicesImplTest {
                         mockId,
                         "Admin",
                         "Admin",
-                        mockCreatedBy,
                         createdAt,
                         updatedAt)
                 );
@@ -414,7 +393,6 @@ class PermissionServicesImplTest {
         String term = "";
 
         UUID mockId = UUID.randomUUID();
-        UUID mockCreatedBy = UUID.randomUUID();
         LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
         LocalDateTime updatedAt = LocalDateTime.now();
 
@@ -422,7 +400,6 @@ class PermissionServicesImplTest {
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdBy(mockCreatedBy)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build();
@@ -442,7 +419,6 @@ class PermissionServicesImplTest {
                         mockId,
                         "Admin",
                         "Admin",
-                        mockCreatedBy,
                         createdAt,
                         updatedAt)
                 );
@@ -469,7 +445,6 @@ class PermissionServicesImplTest {
         String term = "";
 
         UUID mockId = UUID.randomUUID();
-        UUID mockCreatedBy = UUID.randomUUID();
         LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
         LocalDateTime updatedAt = LocalDateTime.now();
 
@@ -477,7 +452,6 @@ class PermissionServicesImplTest {
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdBy(mockCreatedBy)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build();
@@ -498,7 +472,6 @@ class PermissionServicesImplTest {
                         mockId,
                         "Admin",
                         "Admin",
-                        mockCreatedBy,
                         createdAt,
                         updatedAt)
                 );
@@ -525,7 +498,6 @@ class PermissionServicesImplTest {
         String term = "";
 
         UUID mockId = UUID.randomUUID();
-        UUID mockCreatedBy = UUID.randomUUID();
         LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
         LocalDateTime updatedAt = LocalDateTime.now();
 
@@ -533,7 +505,6 @@ class PermissionServicesImplTest {
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdBy(mockCreatedBy)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build();
@@ -554,7 +525,6 @@ class PermissionServicesImplTest {
                         mockId,
                         "Admin",
                         "Admin",
-                        mockCreatedBy,
                         createdAt,
                         updatedAt)
                 );
@@ -580,7 +550,6 @@ class PermissionServicesImplTest {
     public void should_return_permission_by_id() {
         // Fake data
         UUID permissionId = UUID.randomUUID();
-        UUID mockCreatedBy = UUID.randomUUID();
         LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
         LocalDateTime updatedAt = LocalDateTime.now();
 
@@ -588,7 +557,6 @@ class PermissionServicesImplTest {
                 .id(permissionId)
                 .name("Admin")
                 .code("Admin")
-                .createdBy(mockCreatedBy)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build();
@@ -600,7 +568,6 @@ class PermissionServicesImplTest {
                         permissionId,
                         "Admin",
                         "Admin",
-                        mockCreatedBy,
                         createdAt,
                         updatedAt)
                 );
@@ -612,7 +579,6 @@ class PermissionServicesImplTest {
         assertEquals(permission.getId(), dto.getId());
         assertEquals(permission.getName(), dto.getName());
         assertEquals(permission.getCode(), dto.getCode());
-        assertEquals(permission.getCreatedBy(), dto.getCreatedBy());
         assertEquals(permission.getCreatedAt(), dto.getCreatedAt());
         assertEquals(permission.getUpdatedAt(), dto.getUpdatedAt());
 
@@ -634,7 +600,6 @@ class PermissionServicesImplTest {
     public void should_successfully_save_a_permission() {
 
     UUID mockId = UUID.randomUUID();
-    UUID mockCreatedBy = UUID.randomUUID();
     LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
     LocalDateTime updatedAt = LocalDateTime.now();
 
@@ -652,7 +617,6 @@ class PermissionServicesImplTest {
             .id(mockId)
             .name("Admin")
             .code("Admin")
-            .createdBy(mockCreatedBy)
             .createdAt(createdAt)
             .updatedAt(updatedAt)
             .build();
@@ -667,7 +631,6 @@ class PermissionServicesImplTest {
                         mockId,
                         "Admin",
                         "Admin",
-                        mockCreatedBy,
                         createdAt,
                         updatedAt)
                 );
@@ -678,11 +641,9 @@ class PermissionServicesImplTest {
         assertEquals(dto.getCode(), permissionDto.getCode());
         assertEquals(dto.getName(), permissionDto.getName());
         assertEquals(mockId, permissionDto.getId());
-        assertEquals(mockCreatedBy, permissionDto.getCreatedBy());
         assertEquals(createdAt, permissionDto.getCreatedAt());
         assertEquals(updatedAt, permissionDto.getUpdatedAt());
         assertNotNull(permissionDto.getId());
-        assertNotNull(permissionDto.getCreatedBy());
         assertNotNull(permissionDto.getCreatedAt());
         assertNotNull(permissionDto.getUpdatedAt());
 
@@ -727,7 +688,6 @@ class PermissionServicesImplTest {
     public void should_successfully_update_a_permission() {
 
         UUID permissionId = UUID.randomUUID();
-        UUID mockCreatedBy = UUID.randomUUID();
         LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
         LocalDateTime updatedAt = LocalDateTime.now();
 
@@ -739,7 +699,6 @@ class PermissionServicesImplTest {
         Permission permission = Permission.builder()
                 .name("Admin")
                 .code("Admin")
-                .createdBy(mockCreatedBy)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build();
@@ -748,7 +707,6 @@ class PermissionServicesImplTest {
                 .id(permissionId)
                 .name("Admin")
                 .code("Admin")
-                .createdBy(mockCreatedBy)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .build();
@@ -764,7 +722,6 @@ class PermissionServicesImplTest {
                         permissionId,
                         "Admin",
                         "Admin",
-                        mockCreatedBy,
                         createdAt,
                         updatedAt)
                 );
@@ -775,11 +732,9 @@ class PermissionServicesImplTest {
         assertEquals(dto.getCode(), permissionDto.getCode());
         assertEquals(dto.getName(), permissionDto.getName());
         assertEquals(permissionId, permissionDto.getId());
-        assertEquals(mockCreatedBy, permissionDto.getCreatedBy());
         assertEquals(createdAt, permissionDto.getCreatedAt());
         assertEquals(updatedAt, permissionDto.getUpdatedAt());
         assertNotNull(permissionDto.getId());
-        assertNotNull(permissionDto.getCreatedBy());
         assertNotNull(permissionDto.getCreatedAt());
         assertNotNull(permissionDto.getUpdatedAt());
 

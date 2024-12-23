@@ -33,7 +33,6 @@ class PermissionMapperTest {
                 .id(null)
                 .name("admin")
                 .code("admin")
-                .createdBy(UUID.randomUUID())
                 .createdAt(LocalDateTime.now().minusDays(1))
                 .updatedAt(LocalDateTime.now())
                 .build();
@@ -49,7 +48,6 @@ class PermissionMapperTest {
                 .id(UUID.randomUUID())
                 .name("admin")
                 .code(null)
-                .createdBy(UUID.randomUUID())
                 .createdAt(LocalDateTime.now().minusDays(1))
                 .updatedAt(LocalDateTime.now())
                 .build();
@@ -65,7 +63,6 @@ class PermissionMapperTest {
                 .id(UUID.randomUUID())
                 .name("")
                 .code("admin")
-                .createdBy(UUID.randomUUID())
                 .createdAt(LocalDateTime.now().minusDays(1))
                 .updatedAt(LocalDateTime.now())
                 .build();
@@ -75,27 +72,11 @@ class PermissionMapperTest {
     }
 
     @Test
-    public void should_fail_when_created_by_is_null() {
-        Permission permission = Permission.builder()
-                .id(UUID.randomUUID())
-                .name("name")
-                .code("admin")
-                .createdBy(null)
-                .createdAt(LocalDateTime.now().minusDays(1))
-                .updatedAt(LocalDateTime.now())
-                .build();
-
-        var exp = assertThrows(IllegalArgumentException.class, ()->mapper.convertToDto(permission));
-        assertEquals("created_by_cannot_be_null", exp.getMessage());
-    }
-
-    @Test
     public void should_fail_when_created_at_is_null() {
         Permission permission = Permission.builder()
                 .id(UUID.randomUUID())
                 .name("admin")
                 .code("admin")
-                .createdBy(UUID.randomUUID())
                 .createdAt(null)
                 .updatedAt(LocalDateTime.now())
                 .build();
@@ -110,7 +91,6 @@ class PermissionMapperTest {
                 .id(UUID.randomUUID())
                 .name("admin")
                 .code("admin")
-                .createdBy(UUID.randomUUID())
                 .createdAt(LocalDateTime.now().minusDays(1))
                 .updatedAt(null)
                 .build();
@@ -125,7 +105,6 @@ class PermissionMapperTest {
                 .id(UUID.randomUUID())
                 .name("admin")
                 .code("admin")
-                .createdBy(UUID.randomUUID())
                 .createdAt(LocalDateTime.now().minusDays(1))
                 .updatedAt(LocalDateTime.now())
                 .build();
@@ -135,7 +114,6 @@ class PermissionMapperTest {
         assertEquals(permission.getId(), result.getId());
         assertEquals(permission.getName(), result.getName());
         assertEquals(permission.getCode(), result.getCode());
-        assertEquals(permission.getCreatedBy(), result.getCreatedBy());
         assertEquals(permission.getCreatedAt(), result.getCreatedAt());
         assertEquals(permission.getUpdatedAt(), result.getUpdatedAt());
     }
@@ -146,8 +124,6 @@ class PermissionMapperTest {
         assertNotNull(exp);
         assertEquals("The permission is null", exp.getMessage());
     }
-
-
 
 
     // Convert Dto to permission

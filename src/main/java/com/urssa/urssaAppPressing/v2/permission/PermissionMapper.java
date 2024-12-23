@@ -30,7 +30,6 @@ public class PermissionMapper {
                 permission.getId(),
                 permission.getName(),
                 permission.getCode(),
-                permission.getCreatedBy(),
                 permission.getCreatedAt(),
                 permission.getUpdatedAt()
         );
