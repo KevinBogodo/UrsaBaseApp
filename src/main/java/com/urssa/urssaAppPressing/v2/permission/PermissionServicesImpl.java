@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class PermissionServicesImpl implements PermissionServices{
 
     private final PermissionRepository permissionRepository;
-    private final PermisionsMapper permisionsMapper;
+    private final PermissionMapper permissionsMapper;
 
     @Override
     public List<PermissionDto> loadOrSearchAllPermission(String term) {
@@ -32,18 +32,14 @@ public class PermissionServicesImpl implements PermissionServices{
         }
 
         return data.stream()
-                .map(permission -> new PermissionDto(
-                        permission.getId(),
-                        permission.getCode(),
-                        permission.getCode(),
-                        permission.getCreatedBy(),
-                        permission.getCreatedAt(),
-                        permission.getUpdatedAt()))
+                .map(permissionsMapper::convertToDto)
                 .toList();
     }
 
     @Override
     public PageResponse<PermissionDto> loadOrSearchAllPermissionPaginated(Long page, Long size, String term) {
+        if (page == null) { page = 0L;}
+        if (size == null) { size = 10L;}
         Pageable pageable = PageRequest.of(page.intValue(), size.intValue());
         Page<Permission> permissionPage;
 
@@ -54,7 +50,7 @@ public class PermissionServicesImpl implements PermissionServices{
         }
 
         List<PermissionDto> permissionDto = permissionPage.getContent().stream()
-                .map(permisionsMapper::convertToDto)
+                .map(permissionsMapper::convertToDto)
                 .collect(Collectors.toList());
 
         return new PageResponse<>(
@@ -68,22 +64,43 @@ public class PermissionServicesImpl implements PermissionServices{
 
     @Override
     public PermissionDto loadPermissionById(UUID id) {
-        return permissionRepository.findById(id).map(permisionsMapper::convertToDto)
+        if (id == null){
+            throw new NullPointerException("id_cannot_be_null");
+        }
+        return permissionRepository.findById(id).map(permissionsMapper::convertToDto)
                 .orElseThrow(() -> new RessourcesNotFoundException("permission_not_found"));
     }
 
     @Override
     public PermissionDto addPermission(AddPermissionDto addPermissionDTO) {
-
-        Permission permission = permisionsMapper.convertToPermission(addPermissionDTO);
+        if (addPermissionDTO.getCode() == null || addPermissionDTO.getCode().isEmpty()){
+            throw new IllegalArgumentException("code_cannot_be_empty");
+        }
+        if (addPermissionDTO.getName() == null || addPermissionDTO.getName().isEmpty()){
+            throw new IllegalArgumentException("name_cannot_be_empty");
+        }
+        Permission permission = permissionsMapper.convertToPermission(addPermissionDTO);
         Permission savedPermissions = permissionRepository.save(permission);
-        return permisionsMapper.convertToDto(savedPermissions);
+        return permissionsMapper.convertToDto(savedPermissions);
     }
 
     @Override
     public PermissionDto updatePermission(AddPermissionDto updatedData, UUID id) {
+        if (id == null){
+            throw new NullPointerException("id_cannot_be_null");
+        }
+        if (updatedData == null){
+            throw new NullPointerException("update_data_object_cannot_be_empty");
+        }
+        if (updatedData.getCode() == null || updatedData.getCode().isEmpty()){
+            throw new IllegalArgumentException("code_cannot_be_empty");
+        }
+        if (updatedData.getName() == null || updatedData.getName().isEmpty()){
+            throw new IllegalArgumentException("name_cannot_be_empty");
+        }
+
         Permission savedPermission;
-        Permission permissionData = permisionsMapper.convertToPermission(updatedData);
+        Permission permissionData = permissionsMapper.convertToPermission(updatedData);
 
         Optional<Permission> existingPermission = permissionRepository.findById(id);
 
@@ -96,6 +113,7 @@ public class PermissionServicesImpl implements PermissionServices{
             savedPermission = permissionRepository.save(permissionData);
         }
 
-        return permisionsMapper.convertToDto(savedPermission);
+        return permissionsMapper.convertToDto(savedPermission);
     }
+
 }

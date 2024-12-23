@@ -8,6 +8,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -27,4 +28,5 @@ public class Permission extends BaseEntity {
         this.name = name;
         this.code = code;
     }
+
 }

@@ -1,5 +1,7 @@
 package com.urssa.urssaAppPressing.v2.permission.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -10,10 +12,21 @@ import java.util.UUID;
 @AllArgsConstructor
 public class PermissionDto {
 
+    @NotNull(message = "id_cannot_be_null")
     private UUID id;
+
+    @NotBlank(message = "name_cannot_be_empty")
     private String name;
+
+    @NotBlank(message = "code_cannot_be_empty")
     private String code;
-    private Long createdBy;
+
+    @NotNull(message = "created_by_cannot_be_null")
+    private UUID createdBy;
+
+    @NotNull(message = "created_at_cannot_be_null")
     private LocalDateTime createdAt;
+
+    @NotNull(message = "updated_at_cannot_be_null")
     private LocalDateTime updatedAt;
 }

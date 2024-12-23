@@ -26,10 +26,10 @@ public class BaseEntity {
 
 
     @Column(name = "created_by")
-    private Long createdBy;
+    private UUID createdBy;
 
     @Column(name = "updated_by")
-    private Long updatedBy;
+    private UUID updatedBy;
 
     @CreationTimestamp
     @Column(updatable = false, name = "created_at")
@@ -39,7 +39,7 @@ public class BaseEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    public BaseEntity(Long createdBy, Long updatedBy, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public BaseEntity(UUID createdBy, UUID updatedBy, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.createdBy = createdBy;
         this.updatedBy = updatedBy;
         this.createdAt = createdAt;

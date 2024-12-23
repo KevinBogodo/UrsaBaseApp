@@ -9,11 +9,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class AddPermissionDto {
 
-    @NotNull(message = "name_cannot_be_null")
     @NotBlank(message = "name_cannot_be_empty")
     private String name;
 
-    @NotNull(message = "code_cannot_be_null")
     @NotBlank(message = "code_cannot_be_empty")
     private String code;
 }

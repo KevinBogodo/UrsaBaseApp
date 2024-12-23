@@ -7,6 +7,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -23,13 +24,13 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
+            .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> auth
                     .requestMatchers("api/v2/auth/**").permitAll()
-                    .requestMatchers(HttpMethod.GET, "api/v2/access/permissions/").hasAuthority("ROOT")
-                    .requestMatchers(HttpMethod.GET, "api/v2/access/permissions/**").hasAuthority("ROOT")
-                    .requestMatchers(HttpMethod.POST, "api/v2/access/permissions").hasAuthority("ROOT")
-                    .requestMatchers(HttpMethod.PUT, "api/v2/access/permissions/**").hasAuthority("ROOT")
+//                    .requestMatchers(HttpMethod.GET, "api/v2/access/permissions/").hasAuthority("ROOT")
+//                    .requestMatchers(HttpMethod.GET, "api/v2/access/permissions/**").hasAuthority("ROOT")
+                    .requestMatchers(HttpMethod.POST, "api/v2/access/permissions").permitAll()
+//                    .requestMatchers(HttpMethod.PUT, "api/v2/access/permissions/**").hasAuthority("ROOT")
                     .anyRequest().authenticated()
             )
             .sessionManagement(session -> session
