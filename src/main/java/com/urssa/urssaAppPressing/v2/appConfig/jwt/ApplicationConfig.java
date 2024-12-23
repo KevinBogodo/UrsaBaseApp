@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@EnableJpaAuditing
+@EnableJpaAuditing(auditorAwareRef = "auditorAwareImpl")
 @RequiredArgsConstructor
 public class ApplicationConfig {
 

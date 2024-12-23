@@ -32,9 +32,6 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterRequest request) {
 
-        var role = roleRepository.findById(request.getRole())
-                .orElseThrow(() -> new IllegalArgumentException("Role not found"));
-
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
@@ -43,8 +40,16 @@ public class AuthenticationService {
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .phone(request.getPhone())
-                .role(role)
                 .build();
+
+        if (request.getRole() != null) {
+            var role = roleRepository.findById(request.getRole())
+                    .orElseThrow(() -> new IllegalArgumentException("Role not found"));
+
+            if (role != null) {
+                user.setRole(role);
+            }
+        }
 
         userRepository.save(user);
 
@@ -88,18 +93,14 @@ public class AuthenticationService {
         final String refreshToken;
         final String userName;
 
-        System.out.println("----------------************************-------------");
-
         if(authHeader == null ||!authHeader.startsWith("Bearer ")) {
             return;
         }
 
         refreshToken = authHeader.substring(7);
         userName =  jwtService.extractUsername(refreshToken);
-        System.out.println("userName: "+userName);
         if(userName != null) {
             var user = this.userRepository.findByUsername(userName).orElseThrow();
-            System.out.println("authHeader: "+user);
             if(jwtService.isTokenValid(refreshToken, user)) {
                 var accessToken = jwtService.generateToken(user);
                 var authResponse = AuthenticationResponse

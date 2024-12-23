@@ -29,7 +29,7 @@ public class SecurityConfiguration {
                     .requestMatchers("api/v2/auth/**").permitAll()
 //                    .requestMatchers(HttpMethod.GET, "api/v2/access/permissions/").hasAuthority("ROOT")
 //                    .requestMatchers(HttpMethod.GET, "api/v2/access/permissions/**").hasAuthority("ROOT")
-                    .requestMatchers(HttpMethod.POST, "api/v2/access/permissions").permitAll()
+//                    .requestMatchers(HttpMethod.POST, "api/v2/access/permissions").permitAll()
 //                    .requestMatchers(HttpMethod.PUT, "api/v2/access/permissions/**").hasAuthority("ROOT")
                     .anyRequest().authenticated()
             )
