@@ -7,6 +7,9 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -15,6 +18,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @SuperBuilder
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
 
     @Id
@@ -23,11 +27,11 @@ public class BaseEntity {
     @Column(updatable = false, nullable = false)
     private UUID id;
 
-
-
-    @Column(name = "created_by")
+    @CreatedBy
+    @Column(name = "created_by", updatable = false)
     private UUID createdBy;
 
+    @LastModifiedBy
     @Column(name = "updated_by")
     private UUID updatedBy;
 
