@@ -1,6 +1,7 @@
 package com.urssa.urssaAppPressing.v2.appConfig.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -16,6 +17,7 @@ import java.util.UUID;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @SuperBuilder
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
@@ -43,10 +45,10 @@ public class BaseEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    public BaseEntity(UUID createdBy, UUID updatedBy, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.createdBy = createdBy;
-        this.updatedBy = updatedBy;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
+    @Column(nullable = false)
+    private boolean isAdmin = false;
+
+    @Column(nullable = false)
+    private boolean isDeleted = false;
+
 }
