@@ -6,11 +6,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -50,15 +55,36 @@ public class User implements UserDetails {
 
     private String password;
 
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
     @Column(name = "phone", length = 15)
     private String phone;
 
     @Column(name = "first_connection")
     private Integer firsConnection;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @CreatedBy
+    @Column(name = "created_by", updatable = true, nullable = true)
+    private UUID createdBy;
+
+    @LastModifiedBy
+    @Column(name = "updated_by", nullable = true)
+    private UUID updatedBy;
+
+    @CreationTimestamp
+    @Column(updatable = false, name = "created_at")
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @Column(nullable = false)
+    private boolean isDeleted = false;
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -79,6 +79,12 @@ public class PermissionServicesImpl implements PermissionServices{
         if (addPermissionDTO.getName() == null || addPermissionDTO.getName().isEmpty()){
             throw new IllegalArgumentException("name_cannot_be_empty");
         }
+        if (permissionRepository.existsByName(addPermissionDTO.getName())) {
+            throw new IllegalArgumentException("name_already_exists");
+        }
+        if (permissionRepository.existsByCode(addPermissionDTO.getCode())) {
+            throw new IllegalArgumentException("code_already_exists");
+        }
         Permission permission = permissionsMapper.convertToPermission(addPermissionDTO);
         Permission savedPermissions = permissionRepository.save(permission);
         return permissionsMapper.convertToDto(savedPermissions);
@@ -99,19 +105,13 @@ public class PermissionServicesImpl implements PermissionServices{
             throw new IllegalArgumentException("name_cannot_be_empty");
         }
 
-        Permission savedPermission;
-        Permission permissionData = permissionsMapper.convertToPermission(updatedData);
+        Permission permission = permissionRepository
+                .findById(id)
+                .orElseThrow(() ->new RessourcesNotFoundException("permission_not_found"));
 
-        Optional<Permission> existingPermission = permissionRepository.findById(id);
-
-        if (existingPermission.isPresent()) {
-            Permission permissionToUpdate = existingPermission.get();
-            permissionToUpdate.setName(permissionData.getName());
-            permissionToUpdate.setCode(permissionData.getCode());
-            savedPermission = permissionRepository.save(permissionToUpdate);
-        } else {
-            savedPermission = permissionRepository.save(permissionData);
-        }
+        permission.setName(updatedData.getName());
+        permission.setCode(updatedData.getCode());
+        Permission savedPermission = permissionRepository.save(permission);
 
         return permissionsMapper.convertToDto(savedPermission);
     }

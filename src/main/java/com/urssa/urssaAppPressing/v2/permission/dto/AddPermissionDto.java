@@ -14,4 +14,5 @@ public class AddPermissionDto {
 
     @NotBlank(message = "code_cannot_be_empty")
     private String code;
+
 }

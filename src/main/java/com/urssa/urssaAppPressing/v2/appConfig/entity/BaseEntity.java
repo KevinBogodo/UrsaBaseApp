@@ -1,9 +1,10 @@
 package com.urssa.urssaAppPressing.v2.appConfig.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -15,12 +16,13 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Data
+
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @SuperBuilder
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
 
     @Id
@@ -51,4 +53,10 @@ public class BaseEntity {
     @Column(nullable = false)
     private boolean isDeleted = false;
 
+    public BaseEntity(UUID createdBy, UUID updatedBy, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 }

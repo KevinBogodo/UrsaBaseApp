@@ -19,6 +19,8 @@ public class RoleDto {
     @NotBlank(message = "name_cannot_be_empty")
     private String name;
 
-    Set<Permission> permissions;
+    private Boolean isAdmin;
+
+    private Set<Permission> permissions;
 
 }

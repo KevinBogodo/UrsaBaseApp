@@ -13,9 +13,9 @@ public class RoleMapper {
 
     private  final Validator validator;
 
-    public RoleMapper(Validator validator) {
+    public RoleMapper() {
         try(ValidatorFactory factory = Validation.buildDefaultValidatorFactory()) {
-            this.validator = validator;
+            this.validator = factory.getValidator();
         }
     }
 
@@ -27,8 +27,12 @@ public class RoleMapper {
         RoleDto dto = new RoleDto(
                 role.getId(),
                 role.getName(),
+                role.isAdmin(),
                 role.getPermissions()
         );
+
+        System.out.println("Permissions in RoleDto: " + dto.getPermissions());
+
 
         var violations = validator.validate(dto);
         if (!violations.isEmpty()) {

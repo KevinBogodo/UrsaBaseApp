@@ -21,9 +21,4 @@ public class PermissionDto {
     @NotBlank(message = "code_cannot_be_empty")
     private String code;
 
-    @NotNull(message = "created_at_cannot_be_null")
-    private LocalDateTime createdAt;
-
-    @NotNull(message = "updated_at_cannot_be_null")
-    private LocalDateTime updatedAt;
 }

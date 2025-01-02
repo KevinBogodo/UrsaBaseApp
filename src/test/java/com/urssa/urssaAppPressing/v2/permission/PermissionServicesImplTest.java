@@ -57,8 +57,6 @@ class PermissionServicesImplTest {
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build()
         );
         // Mock the calls
@@ -67,9 +65,7 @@ class PermissionServicesImplTest {
                 .thenReturn(new PermissionDto(
                         mockId,
                         "Admin",
-                        "Admin",
-                        createdAt,
-                        updatedAt)
+                        "Admin")
                 );
         // Action
         List<PermissionDto> permissionDtos = permissionServices.loadOrSearchAllPermission(null);
@@ -82,15 +78,11 @@ class PermissionServicesImplTest {
     public void should_return_all_permissions_when_search_term_as_value() {
         String term = "Ad";
         UUID mockId = UUID.randomUUID();
-        LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
-        LocalDateTime updatedAt = LocalDateTime.now();
         List<Permission> permissions = new ArrayList<>();
         permissions.add(Permission.builder()
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build()
         );
         // Mock the calls
@@ -99,9 +91,7 @@ class PermissionServicesImplTest {
                 .thenReturn(new PermissionDto(
                         mockId,
                         "Admin",
-                        "Admin",
-                        createdAt,
-                        updatedAt)
+                        "Admin")
                 );
 
         // Execution
@@ -121,15 +111,11 @@ class PermissionServicesImplTest {
         String term = "Adm";
 
         UUID mockId = UUID.randomUUID();
-        LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
-        LocalDateTime updatedAt = LocalDateTime.now();
 
         Permission permission = Permission.builder()
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build();
 
         Pageable pageable = PageRequest.of(page.intValue(), size.intValue());
@@ -148,9 +134,7 @@ class PermissionServicesImplTest {
                  .thenReturn(new PermissionDto(
                          mockId,
                          "Admin",
-                         "Admin",
-                         createdAt,
-                         updatedAt)
+                         "Admin")
                  );
 
          // Action
@@ -176,15 +160,11 @@ class PermissionServicesImplTest {
         String term = "";
 
         UUID mockId = UUID.randomUUID();
-        LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
-        LocalDateTime updatedAt = LocalDateTime.now();
 
         Permission permission = Permission.builder()
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build();
 
         Pageable pageable = PageRequest.of(page.intValue(), size.intValue());
@@ -202,9 +182,7 @@ class PermissionServicesImplTest {
                 .thenReturn(new PermissionDto(
                         mockId,
                         "Admin",
-                        "Admin",
-                        createdAt,
-                        updatedAt)
+                        "Admin")
                 );
 
         // Action
@@ -230,15 +208,11 @@ class PermissionServicesImplTest {
         String term = "Adm";
 
         UUID mockId = UUID.randomUUID();
-        LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
-        LocalDateTime updatedAt = LocalDateTime.now();
 
         Permission permission = Permission.builder()
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build();
 
         Pageable pageable = PageRequest.of(0, size.intValue());
@@ -256,9 +230,7 @@ class PermissionServicesImplTest {
                 .thenReturn(new PermissionDto(
                         mockId,
                         "Admin",
-                        "Admin",
-                        createdAt,
-                        updatedAt)
+                        "Admin")
                 );
 
         // Action
@@ -284,15 +256,11 @@ class PermissionServicesImplTest {
         String term = "Adm";
 
         UUID mockId = UUID.randomUUID();
-        LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
-        LocalDateTime updatedAt = LocalDateTime.now();
 
         Permission permission = Permission.builder()
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build();
 
         Pageable pageable = PageRequest.of(page.intValue(), 10);
@@ -311,9 +279,7 @@ class PermissionServicesImplTest {
                 .thenReturn(new PermissionDto(
                         mockId,
                         "Admin",
-                        "Admin",
-                        createdAt,
-                        updatedAt)
+                        "Admin")
                 );
 
         // Action
@@ -339,15 +305,11 @@ class PermissionServicesImplTest {
         String term = "Ad";
 
         UUID mockId = UUID.randomUUID();
-        LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
-        LocalDateTime updatedAt = LocalDateTime.now();
 
         Permission permission = Permission.builder()
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build();
 
         Pageable pageable = PageRequest.of(0, 10);
@@ -365,9 +327,7 @@ class PermissionServicesImplTest {
                 .thenReturn(new PermissionDto(
                         mockId,
                         "Admin",
-                        "Admin",
-                        createdAt,
-                        updatedAt)
+                        "Admin")
                 );
 
         // Action
@@ -393,15 +353,11 @@ class PermissionServicesImplTest {
         String term = "";
 
         UUID mockId = UUID.randomUUID();
-        LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
-        LocalDateTime updatedAt = LocalDateTime.now();
 
         Permission permission = Permission.builder()
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build();
 
         Pageable pageable = PageRequest.of(page.intValue(), 10);
@@ -418,9 +374,7 @@ class PermissionServicesImplTest {
                 .thenReturn(new PermissionDto(
                         mockId,
                         "Admin",
-                        "Admin",
-                        createdAt,
-                        updatedAt)
+                        "Admin")
                 );
 
         // Action
@@ -445,15 +399,11 @@ class PermissionServicesImplTest {
         String term = "";
 
         UUID mockId = UUID.randomUUID();
-        LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
-        LocalDateTime updatedAt = LocalDateTime.now();
 
         Permission permission = Permission.builder()
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build();
 
         Pageable pageable = PageRequest.of(0, size.intValue());
@@ -471,9 +421,7 @@ class PermissionServicesImplTest {
                 .thenReturn(new PermissionDto(
                         mockId,
                         "Admin",
-                        "Admin",
-                        createdAt,
-                        updatedAt)
+                        "Admin")
                 );
 
         // Action
@@ -498,15 +446,11 @@ class PermissionServicesImplTest {
         String term = "";
 
         UUID mockId = UUID.randomUUID();
-        LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
-        LocalDateTime updatedAt = LocalDateTime.now();
 
         Permission permission = Permission.builder()
                 .id(mockId)
                 .name("Admin")
                 .code("Admin")
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build();
 
         Pageable pageable = PageRequest.of(0, 10);
@@ -524,9 +468,7 @@ class PermissionServicesImplTest {
                 .thenReturn(new PermissionDto(
                         mockId,
                         "Admin",
-                        "Admin",
-                        createdAt,
-                        updatedAt)
+                        "Admin")
                 );
 
         // Action
@@ -550,26 +492,21 @@ class PermissionServicesImplTest {
     public void should_return_permission_by_id() {
         // Fake data
         UUID permissionId = UUID.randomUUID();
-        LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
-        LocalDateTime updatedAt = LocalDateTime.now();
 
         Permission permission = Permission.builder()
                 .id(permissionId)
                 .name("Admin")
                 .code("Admin")
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build();
         // Mock the calls
         when(repository.findById(permissionId))
                 .thenReturn(Optional.of(permission));
+
         when(mapper.convertToDto(any(Permission.class)))
                 .thenReturn(new PermissionDto(
                         permissionId,
                         "Admin",
-                        "Admin",
-                        createdAt,
-                        updatedAt)
+                        "Admin")
                 );
 
         // Action
@@ -579,8 +516,6 @@ class PermissionServicesImplTest {
         assertEquals(permission.getId(), dto.getId());
         assertEquals(permission.getName(), dto.getName());
         assertEquals(permission.getCode(), dto.getCode());
-        assertEquals(permission.getCreatedAt(), dto.getCreatedAt());
-        assertEquals(permission.getUpdatedAt(), dto.getUpdatedAt());
 
         verify(repository, times(1)).findById(permissionId);
     }
@@ -600,8 +535,6 @@ class PermissionServicesImplTest {
     public void should_successfully_save_a_permission() {
 
     UUID mockId = UUID.randomUUID();
-    LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
-    LocalDateTime updatedAt = LocalDateTime.now();
 
         AddPermissionDto dto = new AddPermissionDto(
                 "Admin",
@@ -617,22 +550,17 @@ class PermissionServicesImplTest {
             .id(mockId)
             .name("Admin")
             .code("Admin")
-            .createdAt(createdAt)
-            .updatedAt(updatedAt)
             .build();
 
         // Mock the calls
         when(mapper.convertToPermission(dto))
                 .thenReturn(permission);
-        when(repository.save(permission))
-                .thenReturn(savedPermission);
+        when(repository.save(permission)).thenReturn(savedPermission);
         when(mapper.convertToDto(savedPermission))
                 .thenReturn(new PermissionDto(
                         mockId,
                         "Admin",
-                        "Admin",
-                        createdAt,
-                        updatedAt)
+                        "Admin")
                 );
 
 
@@ -641,11 +569,7 @@ class PermissionServicesImplTest {
         assertEquals(dto.getCode(), permissionDto.getCode());
         assertEquals(dto.getName(), permissionDto.getName());
         assertEquals(mockId, permissionDto.getId());
-        assertEquals(createdAt, permissionDto.getCreatedAt());
-        assertEquals(updatedAt, permissionDto.getUpdatedAt());
         assertNotNull(permissionDto.getId());
-        assertNotNull(permissionDto.getCreatedAt());
-        assertNotNull(permissionDto.getUpdatedAt());
 
         verify(mapper, times(1))
                 .convertToPermission(dto);
@@ -681,6 +605,36 @@ class PermissionServicesImplTest {
 
     }
 
+    @Test
+    public void should_fail_save_when_name_is_used() {
+
+        AddPermissionDto dto = new AddPermissionDto(
+                "Admin",
+                "Admin"
+        );
+//        Mock
+        when(repository.existsByName("Admin")).thenReturn(true);
+//        Action
+        var exp = assertThrows(IllegalArgumentException.class, ()->permissionServices.addPermission(dto));
+//        Then
+        assertEquals("name_already_exists", exp.getMessage());
+    }
+
+    @Test
+    public void should_fail_save_when_code_is_used() {
+
+        AddPermissionDto dto = new AddPermissionDto(
+                "Admin",
+                "Admin"
+        );
+//        Mock
+        when(repository.existsByCode("Admin")).thenReturn(true);
+//        Action
+        var exp = assertThrows(IllegalArgumentException.class, ()->permissionServices.addPermission(dto));
+//        Then
+        assertEquals("code_already_exists", exp.getMessage());
+    }
+
 
 
     // Update permission
@@ -688,8 +642,6 @@ class PermissionServicesImplTest {
     public void should_successfully_update_a_permission() {
 
         UUID permissionId = UUID.randomUUID();
-        LocalDateTime createdAt = LocalDateTime.now().minusDays(1);
-        LocalDateTime updatedAt = LocalDateTime.now();
 
         AddPermissionDto dto = new AddPermissionDto(
                 "Admin",
@@ -699,20 +651,15 @@ class PermissionServicesImplTest {
         Permission permission = Permission.builder()
                 .name("Admin")
                 .code("Admin")
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build();
 
         Permission savedPermission = Permission.builder()
                 .id(permissionId)
                 .name("Admin")
                 .code("Admin")
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .build();
 
         // Mock the calls
-        when(mapper.convertToPermission(dto)).thenReturn(permission);
         when(repository.findById(permissionId))
                 .thenReturn(Optional.of(permission));
         when(repository.save(any(Permission.class)))
@@ -721,9 +668,7 @@ class PermissionServicesImplTest {
                 .thenReturn(new PermissionDto(
                         permissionId,
                         "Admin",
-                        "Admin",
-                        createdAt,
-                        updatedAt)
+                        "Admin")
                 );
 
         //Action
@@ -732,13 +677,8 @@ class PermissionServicesImplTest {
         assertEquals(dto.getCode(), permissionDto.getCode());
         assertEquals(dto.getName(), permissionDto.getName());
         assertEquals(permissionId, permissionDto.getId());
-        assertEquals(createdAt, permissionDto.getCreatedAt());
-        assertEquals(updatedAt, permissionDto.getUpdatedAt());
         assertNotNull(permissionDto.getId());
-        assertNotNull(permissionDto.getCreatedAt());
-        assertNotNull(permissionDto.getUpdatedAt());
 
-        verify(mapper, times(1)).convertToPermission(dto);
         verify(repository, times(1)).save(permission);
         verify(repository, times(1)).findById(permissionId);
         verify(mapper, times(1)).convertToDto(savedPermission);

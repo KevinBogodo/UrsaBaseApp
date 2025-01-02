@@ -3,24 +3,37 @@ package com.urssa.urssaAppPressing.v2.role;
 import com.urssa.urssaAppPressing.v2.appConfig.entity.BaseEntity;
 import com.urssa.urssaAppPressing.v2.permission.Permission;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.util.List;
+import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.UUID;
 
 
-@EqualsAndHashCode(callSuper = true)
+//@EqualsAndHashCode(callSuper = true)
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "roles")
-public class Role extends BaseEntity {
+//@EntityListeners(AuditingEntityListener.class)
+public class Role {
 
-    @Column(name = "name", length = 50)
+    @Id
+    @GeneratedValue( generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(updatable = false, nullable = false)
+    private UUID id;
+
+    @Column(name = "name", unique = true, length = 50)
     private String name;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -31,4 +44,31 @@ public class Role extends BaseEntity {
 
     )
     private Set<Permission> permissions;
+
+    @CreatedBy
+    @Column(name = "created_by", updatable = true, nullable = true)
+    private UUID createdBy;
+
+    @LastModifiedBy
+    @Column(name = "updated_by", nullable = true)
+    private UUID updatedBy;
+
+    @CreationTimestamp
+    @Column(updatable = false, name = "created_at")
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @Column(nullable = false)
+    private boolean isAdmin = false;
+
+    @Column(nullable = false)
+    private boolean isDeleted = false;
+
+    public Role(String name, Set<Permission> permissions) {
+        this.name = name;
+        this.permissions = permissions;
+    }
 }

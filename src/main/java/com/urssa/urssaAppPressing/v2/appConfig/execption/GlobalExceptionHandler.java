@@ -64,7 +64,7 @@ public class GlobalExceptionHandler {
     }
 
     // Not Found errorHandler
-    @ExceptionHandler(ConfigDataResourceNotFoundException.class)
+    @ExceptionHandler(RessourcesNotFoundException.class)
     public ResponseEntity<ApiErrorResponse> handlerRessourcesNotFoundException(
             Exception ex,
             HttpServletRequest request
@@ -80,4 +80,23 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(apiErrorResponse, HttpStatus.NOT_FOUND);
     }
+
+    // Illegal argument Found errorHandler
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ApiErrorResponse> handlerIllegalArgumentException(
+            Exception ex,
+            HttpServletRequest request
+    ) {
+        ApiErrorResponse apiErrorResponse = new ApiErrorResponse(
+                LocalDateTime.now(),
+                HttpStatus.EXPECTATION_FAILED.value(),
+                "not_found",
+                ex.getMessage(),
+                null,
+                request.getRequestURI()
+        );
+
+        return new ResponseEntity<>(apiErrorResponse, HttpStatus.NOT_FOUND);
+    }
+
 }

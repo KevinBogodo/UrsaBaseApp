@@ -9,24 +9,33 @@ import java.util.UUID;
 
 public interface RoleServices {
 
-    List<RoleDto> loadOrSearchActiveRoles(String term);
+    List<RoleDto> loadOrSearchNotAdminActiveRoles(String term);
 
-    PageResponse<RoleDto> loadOrSearchActiveRolesPaged(Long page, Long size, String term);
-
-    List<RoleDto> loadOrSearchRoles(String term);
-
-    PageResponse<RoleDto> loadOrSearchRolesPaged(Long page, Long size, String term);
+    PageResponse<RoleDto> loadOrSearchNotAdminActiveRolesPaged(Long page, Long size, String term);
 
     RoleDto loadRoleById(UUID id);
 
-    RoleDto addRoles(AddRoleDto request);
+    RoleDto addRoles(AddRoleDto request, String type);
 
     RoleDto updateRole(AddRoleDto request, UUID id);
 
     String softDeleteRole(UUID id);
 
+    RoleDto restoreRole(UUID id);
+
+    RoleDto changeRoleType(UUID id,String type);
+
+
+    List<RoleDto> loadOrSearchAdminActiveRoles(String term);
+
+    PageResponse<RoleDto> loadOrSearchAdminActiveRolesPaged(Long page, Long size, String term);
+
+    PageResponse<RoleDto> loadOrSearchAdminNotActiveRolesPaged(Long page, Long size, String term);
+
+    PageResponse<RoleDto> loadOrSearchNotAdminNotActiveRolesPaged(Long page, Long size, String term);
+
     String deleteRole(UUID id);
 
-    Role setAdminRole(UUID id);
+
 
 }

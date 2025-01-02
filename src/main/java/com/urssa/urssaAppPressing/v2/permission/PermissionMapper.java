@@ -29,9 +29,7 @@ public class PermissionMapper {
         PermissionDto dto = new PermissionDto(
                 permission.getId(),
                 permission.getName(),
-                permission.getCode(),
-                permission.getCreatedAt(),
-                permission.getUpdatedAt()
+                permission.getCode()
         );
 
         var violations = validator.validate(dto);

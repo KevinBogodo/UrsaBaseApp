@@ -25,7 +25,6 @@ class PermissionMapperTest {
         System.out.println(" ******************** PermissionMapper tested ok *************************");
     }
 
-
     // convert to DTO
     @Test
     public void should_fail_when_id_is_null() {
@@ -56,7 +55,6 @@ class PermissionMapperTest {
         assertEquals("code_cannot_be_empty", exp.getMessage());
     }
 
-
     @Test
     public void should_fail_when_name_is_blank() {
         Permission permission = Permission.builder()
@@ -71,33 +69,6 @@ class PermissionMapperTest {
         assertEquals("name_cannot_be_empty", exp.getMessage());
     }
 
-    @Test
-    public void should_fail_when_created_at_is_null() {
-        Permission permission = Permission.builder()
-                .id(UUID.randomUUID())
-                .name("admin")
-                .code("admin")
-                .createdAt(null)
-                .updatedAt(LocalDateTime.now())
-                .build();
-
-        var exp = assertThrows(IllegalArgumentException.class, ()->mapper.convertToDto(permission));
-        assertEquals("created_at_cannot_be_null", exp.getMessage());
-    }
-
-    @Test
-    public void should_fail_when_updated_at_is_null() {
-        Permission permission = Permission.builder()
-                .id(UUID.randomUUID())
-                .name("admin")
-                .code("admin")
-                .createdAt(LocalDateTime.now().minusDays(1))
-                .updatedAt(null)
-                .build();
-
-        var exp = assertThrows(IllegalArgumentException.class, ()->mapper.convertToDto(permission));
-        assertEquals("updated_at_cannot_be_null", exp.getMessage());
-    }
 
     @Test
     public void should_convert_permission_to_permissionDto() {
@@ -114,8 +85,6 @@ class PermissionMapperTest {
         assertEquals(permission.getId(), result.getId());
         assertEquals(permission.getName(), result.getName());
         assertEquals(permission.getCode(), result.getCode());
-        assertEquals(permission.getCreatedAt(), result.getCreatedAt());
-        assertEquals(permission.getUpdatedAt(), result.getUpdatedAt());
     }
 
     @Test
