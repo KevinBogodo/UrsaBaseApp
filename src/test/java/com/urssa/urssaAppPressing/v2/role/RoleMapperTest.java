@@ -85,7 +85,6 @@ class RoleMapperTest {
 
         RoleDto result = mapper.convertToRoleDto(role);
 
-        System.out.println("result: "+result);
         assertNotNull(result, "result_cannot_be_null_in_conversion");
         assertEquals(role.getId(), result.getId());
         assertEquals(role.getName(), result.getName());

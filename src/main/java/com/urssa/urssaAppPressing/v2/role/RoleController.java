@@ -20,7 +20,7 @@ public class RoleController {
 
     private final RoleServicesImpl roleServices;
 
-    @GetMapping("/roles/search")
+    @GetMapping("/roles/all")
     public ResponseEntity<ApiResponseOk> loadOrSearchNotAdminActiveRoles(@RequestParam(defaultValue = "") String term) {
 
         List<RoleDto> roles = roleServices.loadOrSearchNotAdminActiveRoles(term);
@@ -66,13 +66,13 @@ public class RoleController {
 
     /***************************** Admin *****************************************/
 
-    @PostMapping("/admin/roles/restore/{id}")
+    @PostMapping("/roles/{id}/restore")
     public ResponseEntity<ApiResponseOk> restoreDeletedRole(@PathVariable UUID id) {
         RoleDto roleDto = roleServices.restoreRole(id);
         return ResponseEntity.ok(new ApiResponseOk("success", roleDto));
     }
 
-    @PostMapping("/admin/roles/change-type/{id}/{type}")
+    @PostMapping("/roles/{id}/{type}/change")
     public ResponseEntity<ApiResponseOk> changeRoleType(
             @PathVariable UUID id,
             @PathVariable String type
@@ -81,14 +81,14 @@ public class RoleController {
         return ResponseEntity.ok(new ApiResponseOk("success", roleDto));
     }
 
-    @GetMapping("/admin/roles/search")
+    @GetMapping("/roles/admin/all")
     public ResponseEntity<ApiResponseOk> loadOrSearchAdminActiveRoles(@RequestParam(defaultValue = "") String term) {
 
         List<RoleDto> roles = roleServices.loadOrSearchAdminActiveRoles(term);
         return  ResponseEntity.ok(new ApiResponseOk("success", roles));
     }
 
-    @GetMapping("/admin/roles")
+    @GetMapping("/roles/admin")
     public ResponseEntity<ApiResponseOk> loadOrSearchAdminActiveRolesPaged(
             @RequestParam(defaultValue = "0") Long page,
             @RequestParam(defaultValue = "10") Long size,
@@ -98,7 +98,7 @@ public class RoleController {
         return ResponseEntity.ok(new ApiResponseOk("success", roles));
     }
 
-    @GetMapping("/admin/deleted/roles")
+    @GetMapping("/roles/admin/deleted")
     public ResponseEntity<ApiResponseOk> loadOrSearchAdminNotActiveRolesPaged(
             @RequestParam(defaultValue = "0") Long page,
             @RequestParam(defaultValue = "10") Long size,
@@ -108,7 +108,7 @@ public class RoleController {
         return ResponseEntity.ok(new ApiResponseOk("success", roles));
     }
 
-    @GetMapping("/deleted/roles")
+    @GetMapping("/roles/deleted")
     public ResponseEntity<ApiResponseOk> loadOrSearchNotAdminNotActiveRolesPaged(
             @RequestParam(defaultValue = "0") Long page,
             @RequestParam(defaultValue = "10") Long size,
@@ -119,7 +119,7 @@ public class RoleController {
     }
 
 
-    @DeleteMapping("/admin/roles/{id}")
+    @DeleteMapping("/roles/{id}/delete")
     public ResponseEntity<ApiResponseOk> deleteRole(@PathVariable UUID id) {
         String message = roleServices.deleteRole(id);
         return ResponseEntity.ok(new ApiResponseOk(message, null));

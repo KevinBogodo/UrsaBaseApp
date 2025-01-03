@@ -1,7 +1,10 @@
 package com.urssa.urssaAppPressing.v2.role;
 
 
+import com.urssa.urssaAppPressing.v2.role.dto.AddRoleDto;
 import com.urssa.urssaAppPressing.v2.role.dto.RoleDto;
+import com.urssa.urssaAppPressing.v2.user.User;
+import com.urssa.urssaAppPressing.v2.user.dto.AddUserDto;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -30,9 +33,6 @@ public class RoleMapper {
                 role.isAdmin(),
                 role.getPermissions()
         );
-
-        System.out.println("Permissions in RoleDto: " + dto.getPermissions());
-
 
         var violations = validator.validate(dto);
         if (!violations.isEmpty()) {

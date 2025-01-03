@@ -4,7 +4,6 @@ import com.urssa.urssaAppPressing.v2.appConfig.execption.RessourcesNotFoundExcep
 import com.urssa.urssaAppPressing.v2.appConfig.response.PageResponse;
 import com.urssa.urssaAppPressing.v2.permission.Permission;
 import com.urssa.urssaAppPressing.v2.permission.PermissionRepository;
-import com.urssa.urssaAppPressing.v2.permission.dto.AddPermissionDto;
 import com.urssa.urssaAppPressing.v2.role.dto.AddRoleDto;
 import com.urssa.urssaAppPressing.v2.role.dto.RoleDto;
 import org.junit.jupiter.api.AfterAll;
